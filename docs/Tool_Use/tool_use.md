@@ -389,11 +389,14 @@ Each stage can produce specific error types:
 
 **Error Recovery.** Upon validation failure, the system can:
 
-$$\text{Recovery}(e) = \begin{cases}
-\text{Auto-coerce} & \text{if } e \in \{\text{type\_mismatch with safe cast}\} \\
-\text{Re-prompt with error} & \text{if } e \in \{\text{missing\_field, constraint\_violation}\} \\
-\text{Abort with message} & \text{if } e \in \{\text{parse\_error after } k \text{ retries}\}
-\end{cases}$$
+$$
+\text{Recovery}(e) =
+\begin{cases}
+\text{Auto-coerce} & \text{if } e \in \{\text{type mismatch with safe cast}\} \\
+\text{Re-prompt with error} & \text{if } e \in \{\text{missing field, constraint violation}\} \\
+\text{Abort with message} & \text{if } e \in \{\text{parse error after } k \text{ retries}\}
+\end{cases}
+$$
 
 **Constrained Decoding for Type Safety.** Rather than generating arbitrary text and post-hoc validating, constrained decoding enforces type correctness during generation. Given a JSON Schema $S$, we construct a pushdown automaton $\mathcal{P}_S$ that accepts exactly the set of valid JSON strings conforming to $S$. At each decoding step:
 
