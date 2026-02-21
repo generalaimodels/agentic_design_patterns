@@ -6,6 +6,7 @@ const configDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: process.env.GITHUB_ACTIONS ? "/agentic_design_patterns" : "",
   outputFileTracingRoot: configDirectory,
   images: {
     unoptimized: true
