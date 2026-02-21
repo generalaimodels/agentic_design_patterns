@@ -137,3 +137,15 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+node_modules
+.next
+out
+coverage
+playwright-report
+test-results
+pnpm-lock.yaml
+.env
+src/generated/*.json
+!src/generated/.gitkeep
+public/content-assets
