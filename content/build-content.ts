@@ -22,6 +22,7 @@ import type {
 
 const GENERATED_DIR = path.resolve("src/generated");
 const PUBLIC_ASSET_DIR = path.resolve("public/content-assets");
+const BASE_PATH = process.env.GITHUB_ACTIONS ? "/agentic_design_patterns" : "";
 
 type SourceMap = Map<string, SourceDocument>;
 
@@ -140,7 +141,7 @@ async function resolveMedia(
 
         resolvedMedia.push({
           ...media,
-          resolved: `/${encodeURI(publicRelative)}`
+          resolved: `${BASE_PATH}/${encodeURI(publicRelative)}`
         });
       } catch {
         diagnostics.push({
