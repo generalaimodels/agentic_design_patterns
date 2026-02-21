@@ -973,11 +973,14 @@ where $p < 1$ is the per-step accuracy. A code interpreter achieves $P = 1$ for 
 
 **Critical Safety Property**: Action tools require **confirmation mechanisms** proportional to the severity and reversibility of their effects:
 
-$$\text{RequiresConfirmation}(t_i) = \begin{cases}
+$$
+\text{RequiresConfirmation}(t_i) =
+\begin{cases}
 \text{false} & \text{if } t_i \text{ is read-only} \\
 \text{optional} & \text{if } t_i \text{ is reversible and low-impact} \\
 \text{true} & \text{if } t_i \text{ is irreversible or high-impact}
-\end{cases}$$
+\end{cases}
+$$
 
 ---
 
