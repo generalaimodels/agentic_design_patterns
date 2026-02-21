@@ -4,7 +4,15 @@ import searchIndexData from "@/src/generated/search-index.json";
 import relatedData from "@/src/generated/related-index.json";
 import redirectsData from "@/src/generated/redirects.json";
 import diagnosticsData from "@/src/generated/diagnostics.json";
-import type { Diagnostic, DocRecord, NavigationData, RelatedIndex, RedirectMap, SearchIndex } from "@/content/types";
+import type {
+  Diagnostic,
+  DocRecord,
+  NavigationData,
+  RelatedDoc,
+  RelatedIndex,
+  RedirectMap,
+  SearchIndex
+} from "@/content/types";
 
 const docs = manifestData as DocRecord[];
 const navigation = navigationData as NavigationData;
@@ -80,11 +88,18 @@ export function getDocBySlug(slug: string[]): { doc?: DocRecord; redirectTo?: st
   return { doc: docsByCanonicalPath.get(route.canonicalPath) };
 }
 
-export function getRelatedDocs(docId: string): DocRecord[] {
+export function getRelatedDocs(docId: string): RelatedDoc[] {
   const neighbors = relatedIndex[docId] ?? [];
   return neighbors
     .map((item) => docsById.get(item.docId))
-    .filter((doc): doc is DocRecord => Boolean(doc));
+    .filter((doc): doc is DocRecord => Boolean(doc))
+    .map(
+      (doc): RelatedDoc => ({
+        id: doc.id,
+        title: doc.title,
+        canonicalPath: doc.canonicalPath
+      })
+    );
 }
 
 export function getAllRouteSlugs(): string[][] {

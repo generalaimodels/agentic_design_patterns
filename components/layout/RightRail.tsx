@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import type { ReactElement } from "react";
-import type { DocRecord, SearchIndex } from "@/content/types";
+import type { DocRecord, RelatedDoc, SearchIndex } from "@/content/types";
 import { SearchPanel } from "@/components/search/SearchPanel";
 
 type RightRailProps = {
   searchIndex: SearchIndex;
   headings: DocRecord["headings"];
-  relatedDocs: DocRecord[];
+  relatedDocs: RelatedDoc[];
 };
 
 export function RightRail({ searchIndex, headings, relatedDocs }: RightRailProps): ReactElement {

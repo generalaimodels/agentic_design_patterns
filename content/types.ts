@@ -100,6 +100,12 @@ export type SearchDocument = {
   excerpt: string;
 };
 
+export type RelatedDoc = {
+  id: string;
+  title: string;
+  canonicalPath: string;
+};
+
 export type SearchIndex = {
   version: 1;
   config: { k1: number; b: number; avgDocLength: number };

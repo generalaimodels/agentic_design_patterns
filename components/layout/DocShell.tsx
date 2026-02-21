@@ -2,7 +2,7 @@
 
 import { useMemo, useState, type ReactElement } from "react";
 import clsx from "clsx";
-import type { DocRecord, NavigationData, SearchIndex } from "@/content/types";
+import type { DocRecord, NavigationData, RelatedDoc, SearchIndex } from "@/content/types";
 import { LeftRail } from "@/components/layout/LeftRail";
 import { RightRail } from "@/components/layout/RightRail";
 import { MarkdownRenderer } from "@/components/markdown/MarkdownRenderer";
@@ -11,7 +11,7 @@ type DocShellProps = {
   doc: DocRecord;
   navigation: NavigationData;
   searchIndex: SearchIndex;
-  relatedDocs: DocRecord[];
+  relatedDocs: RelatedDoc[];
 };
 
 function normalizeHeaderTitle(title: string): string {
