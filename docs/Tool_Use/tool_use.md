@@ -1085,12 +1085,15 @@ Step 5: generate_summary(comparison) → final_answer
 
 **Chain Failure Propagation.** If tool $k$ fails, all subsequent tools in the chain are affected. The agent must decide:
 
-$$\text{On failure at step } k: \begin{cases}
+$$
+\text{On failure at step } k:
+\begin{cases}
 \text{Retry step } k & \text{(transient error)} \\
 \text{Skip step } k \text{, adapt chain} & \text{(non-critical step)} \\
 \text{Restart from step } k-1 \text{ with different inputs} & \text{(reformulation)} \\
 \text{Abort chain, report partial results} & \text{(critical failure)}
-\end{cases}$$
+\end{cases}
+$$
 
 ---
 
@@ -1206,10 +1209,13 @@ where:
 
 **Formal Representation:**
 
-$$a_k = \begin{cases}
+$$
+a_k =
+\begin{cases}
 (t_A, \text{args}_A) & \text{if } \phi(o_{k-1}) = \text{true} \\
 (t_B, \text{args}_B) & \text{otherwise}
-\end{cases}$$
+\end{cases}
+$$
 
 where $\phi$ is a predicate evaluated by the LLM over previous outputs.
 
@@ -1252,11 +1258,14 @@ $$o_i = (o_i^{(1)}, o_i^{(2)}, \ldots, o_i^{(T)})$$
 
 The agent can make decisions at each step:
 
-$$\text{decision}_t = \begin{cases}
+$$
+\text{decision}_t =
+\begin{cases}
 \text{continue} & \text{if more data needed} \\
 \text{stop} & \text{if sufficient information gathered} \\
 \text{redirect} & \text{if stream indicates wrong approach}
-\end{cases}$$
+\end{cases}
+$$
 
 **Early Termination Benefit.** For tools with high latency and progressive information delivery, early termination can significantly reduce overall response time:
 
