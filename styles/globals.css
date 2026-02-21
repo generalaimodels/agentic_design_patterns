@@ -239,6 +239,8 @@ h6 {
   box-shadow: var(--shadow-soft);
   padding: clamp(1rem, 2.5vw, 2rem);
   animation: fade-slide-in 260ms ease-out;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .doc-shell__meta {
@@ -288,8 +290,8 @@ h6 {
   padding: var(--space-5);
 }
 
-.left-rail__section + .left-rail__section,
-.right-rail__section + .right-rail__section {
+.left-rail__section+.left-rail__section,
+.right-rail__section+.right-rail__section {
   margin-top: var(--space-6);
 }
 
@@ -429,9 +431,48 @@ h6 {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ---- Mobile layout overrides ---- */
+@media (max-width: 767px) {
+  .doc-shell__header {
+    padding: 0.7rem 0.75rem;
+    gap: var(--space-2);
+  }
+
+  .doc-shell__title {
+    font-size: 1rem;
+    max-width: 48vw;
+  }
+
+  .doc-shell__eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .doc-shell__layout {
+    max-width: 100%;
+    padding: var(--space-2) var(--space-2) var(--space-3);
+  }
+
+  .doc-shell__article {
+    padding: 0.85rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .doc-shell__meta {
+    font-size: 0.72rem;
+    gap: 0.4rem;
+  }
+
+  .left-rail,
+  .doc-shell__right-wrap {
+    width: min(90vw, 340px);
+    top: 56px;
   }
 }
 

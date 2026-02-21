@@ -1,5 +1,8 @@
 .markdown-host {
   min-width: 0;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .markdown-body {
@@ -174,7 +177,7 @@
 
 .markdown-body table {
   width: 100%;
-  min-width: max(100%, 46rem);
+  min-width: 100%;
   border-collapse: collapse;
   table-layout: auto;
   white-space: normal;
@@ -189,7 +192,7 @@
   text-align: left;
   vertical-align: top;
   overflow-wrap: anywhere;
-  word-break: normal;
+  word-break: break-word;
 }
 
 .markdown-body th {
@@ -342,9 +345,102 @@
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
-  max-width: min(100%, 72rem);
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ---- Mobile-specific overrides ---- */
+@media (max-width: 768px) {
+  .markdown-body {
+    font-size: 0.97rem;
+    line-height: 1.68;
+  }
+
+  .markdown-body h1 {
+    font-size: 1.55rem;
+  }
+
+  .markdown-body h2 {
+    font-size: 1.32rem;
+  }
+
+  .markdown-body h3 {
+    font-size: 1.18rem;
+  }
+
+  .markdown-body > p,
+  .markdown-body > ul,
+  .markdown-body > ol,
+  .markdown-body > blockquote,
+  .markdown-body > dl {
+    max-width: 100%;
+  }
+
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    max-width: 100%;
+    text-wrap: pretty;
+  }
+
+  .markdown-body pre {
+    max-width: 100%;
+    border-radius: var(--radius-xs);
+  }
+
+  .markdown-body pre > code {
+    font-size: 0.78em;
+    padding: 0 0.7rem 0.4rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-scroll {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .markdown-body table {
+    font-size: 0.85rem;
+  }
+
+  .markdown-body th,
+  .markdown-body td {
+    padding: 0.38rem 0.48rem;
+  }
+
+  .markdown-body img,
+  .markdown-body video {
+    border-radius: var(--radius-xs);
+  }
+
+  .markdown-body .footnotes {
+    max-width: 100%;
+  }
+
+  .mermaid-render {
+    max-width: 100%;
+    padding: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .katex-display {
+    font-size: 0.88em;
+    padding: 0 0.25rem;
+  }
+
+  .media-shell {
+    max-width: 100%;
+  }
 }
 
 .placeholder-doc {
